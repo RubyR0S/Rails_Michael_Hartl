@@ -6,9 +6,8 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 }, 
             format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i },
             uniqueness: { case_sensitive: false } 
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, allow_blank: true
   has_secure_password
-
 
   # Возвращает дайджест для указанной строки. 
   def self.digest(string)
