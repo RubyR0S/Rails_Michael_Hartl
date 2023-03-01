@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20230226200908) do
+ActiveRecord::Schema.define(version: 20230228131949) do
 
-# Could not dump table "users" because of following StandardError
-#   Unknown type 'boolen' for column 'admin'
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.string "remember_digest"
+    t.boolean "admin", default: false
+    t.string "activation_digest"
+    t.boolean "activated", default: false
+    t.datetime "activated_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+  end
 
 end
